@@ -1,14 +1,23 @@
-<div class="absolute h-dvh w-full max-w-[100vw] bg-fondo-login bg-center object-cover xl:h-full">
-  <section >
-    
-    <div class="flex flex-col justify-center items-center gap-6 absolute top-[25%] left-40 bg-[#753b2d]/90 rounded-3xl py-10 px-[3%]">
-        <h2 class="text-white pb-5">Iniciar Sesion</h2>
-        <form class="flex flex-col items-center gap-3" action="">
-            <input class="py-1 px-2  bg-transparent border-b-2 text-white" type="text" placeholder="Usuario">
-            <input class="py-1 px-2 bg-transparent border-b-2 text-white" type="password" placeholder="Contraseña">
-            <button class="bg-white rounded-2xl text-[#753b2d] mt-4 py-2 px-4 hover:bg-black">Igresar</button>
-        </form>
-    </div>
-  </section>
+---
+import Layout from "../layouts/Layout.astro"
+import { supabase } from "@/lib/supabase";
+
+supabase.auth.onAuthStateChange((event, session) => {
   
-</div>
+})
+---
+
+<Layout title="Login" description="Login">
+  <div class="absolute h-dvh w-full max-w-[100vw] bg-fondo-login bg-center object-cover xl:h-full">
+    <section >
+      <div class="flex flex-col justify-center items-center gap-2 absolute top-1/2 left-[15%] -translate-x-1/2 -translate-y-1/2 bg-[#753b2d]/90 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] rounded-3xl py-10 px-[3%]">
+          <h2 class="text-2xl font-bold text-white pb-5">Iniciar Sesion</h2>
+          <form class="flex flex-col items-center gap-6" action="/api/auth/signin" method="post">
+              <input class="py-1 px-2  bg-transparent border-b-2 text-white" type="text" placeholder="Usuario">
+              <input class="py-1 px-2 bg-transparent border-b-2 text-white" type="password" placeholder="Contraseña">
+              <button type="submit" class="font-semibold bg-[#468C98] rounded-2xl text-white mt-4 py-1 px-20 hover:bg-[#66BECE] hover:text-white">Ingresar</button>
+          </form>
+      </div>
+    </section>
+  </div>
+</Layout>

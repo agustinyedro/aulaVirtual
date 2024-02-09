@@ -26,6 +26,9 @@ if (error) {
 
   return redirect("/signin");
 }
+supabase.auth.getSession().then((data) => {
+  console.log(data);
+});
 
 const email = data?.user?.email;
 ---
